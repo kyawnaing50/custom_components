@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class MyTextButton extends StatelessWidget {
-  const MyTextButton({
+class MyElevatedButton extends StatelessWidget {
+  const MyElevatedButton({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       onPressed: () {},
       child: const Text(
-        "Text Button",
+        "Elevated Button",
         style: TextStyle(color: Colors.black),
       ),
     );

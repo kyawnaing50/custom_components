@@ -5,7 +5,9 @@ class Routes {
   static String text = "/text";
   static String container = "/container";
   static String radio = "/radio";
-  static String edit = "/edit";
-  static String orderDetail = "/orderDetail";
-  static String about = "/about";
+  static String phone = "/phone";
+  static String appbar = "/appbar";
+  static String bottomNavigation = "/bottomNavigation";
+  static String bottomNavi2 = "/bottomNavi2";
+  static String bottomNavi3 = "/bottomNavi3"; 
 }

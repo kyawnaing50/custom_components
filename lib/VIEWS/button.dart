@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_components/WIDGETS/Responsive/my_responsive_schema.dart';
 
+import '../WIDGETS/Buttons/custom_button.dart';
+import '../WIDGETS/Buttons/elevate_button.dart';
 import '../WIDGETS/Buttons/raw_matrial_button.dart';
+import '../WIDGETS/Buttons/text_button.dart';
 import '../WIDGETS/DrawerWidget/drawer_widget.dart';
 
 class ButtonPage extends StatelessWidget {
@@ -22,23 +25,11 @@ class ButtonPage extends StatelessWidget {
       ),
       body: MyResponsiveSchema(
         mobile: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                "Text Button",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text(
-                "Elevated Button",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
+            const MyTextButton(),
+            const MyElevatedButton(),
             IconButton(
               onPressed: () {},
               icon: const Icon(
@@ -51,15 +42,31 @@ class ButtonPage extends StatelessWidget {
             //------------For Ripple Effect--------//
             MaterialButton(
               onPressed: () {},
-              child: Text("Hello Material Button"),
+              child: const Text(
+                "Hello Material Button",
+                style: TextStyle(),
+              ),
             ),
             const MyRawMaterialButton(),
+
+            //----------Back Button------//
             BackButton(
               onPressed: () {},
             ),
+            //---------Close Button----------//
             CloseButton(
               onPressed: () {},
-            )
+            ),
+            CustomButtom(
+                btnColor: Colors.blue,
+                borderRadius: 16,
+                textColor: Colors.white,
+                btnText: "Next",
+                leftIcon: null,
+                rightIcon: null,
+                voidCall: () {},
+                leftIconSize: null,
+                rightIconSize: null),
           ],
         ),
         tablet: Container(),
@@ -69,3 +76,7 @@ class ButtonPage extends StatelessWidget {
     );
   }
 }
+
+
+
+

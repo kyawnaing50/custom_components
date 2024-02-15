@@ -64,6 +64,60 @@ class CustomDrawer extends StatelessWidget {
               textIconColor: Get.currentRoute == Routes.radio
                   ? Colors.white
                   : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "Country Code",
+              onTap: () {
+                navigate(5);
+              },
+              tileColor: Get.currentRoute == Routes.phone ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.phone
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "My App Bar",
+              onTap: () {
+                navigate(6);
+              },
+              tileColor: Get.currentRoute == Routes.appbar ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.appbar
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "BottomNavi 1",
+              onTap: () {
+                navigate(7);
+              },
+              tileColor: Get.currentRoute == Routes.bottomNavigation
+                  ? Colors.blue
+                  : null,
+              textIconColor: Get.currentRoute == Routes.bottomNavigation
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "BottomNavi 2",
+              onTap: () {
+                navigate(8);
+              },
+              tileColor:
+                  Get.currentRoute == Routes.bottomNavi2 ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.bottomNavi2
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "BottomNavi 3",
+              onTap: () {
+                navigate(9);
+              },
+              tileColor:
+                  Get.currentRoute == Routes.bottomNavi3 ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.bottomNavi3
+                  ? Colors.white
+                  : Colors.black),
         ],
       ),
     );
@@ -119,6 +173,21 @@ class CustomDrawer extends StatelessWidget {
     }
     if (index == 4) {
       Get.toNamed(Routes.radio);
+    }
+    if (index == 5) {
+      Get.toNamed(Routes.phone);
+    }
+    if (index == 6) {
+      Get.toNamed(Routes.appbar);
+    }
+    if (index == 7) {
+      Get.toNamed(Routes.bottomNavigation);
+    }
+    if (index == 8) {
+      Get.toNamed(Routes.bottomNavi2);
+    }
+    if (index == 9) {
+      Get.toNamed(Routes.bottomNavi3);
     }
   }
 }
