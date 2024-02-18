@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
 AppStore appStore = AppStore();
 
@@ -28,4 +29,17 @@ class AppStore {
     iconSecondaryColor = Color(0xFFA8ABAD);
     cardColor = Color(0xFF191D36);
   }
+  static final defaultPinTheme = PinTheme(
+    width: 56,
+    height: 56,
+    textStyle: const TextStyle(
+      fontSize: 22,
+      color: Color.fromRGBO(30, 60, 87, 1),
+    ),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(19),
+      border: Border.all(color: Colors.grey),
+    ),
+  );
 }
+

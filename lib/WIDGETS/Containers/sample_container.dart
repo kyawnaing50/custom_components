@@ -19,7 +19,7 @@ class SampleContainer extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: TextStyle(fontSize: 16, color: Colors.white),
+          style: const TextStyle(fontSize: 16, color: Colors.white),
         ),
       ),
     );

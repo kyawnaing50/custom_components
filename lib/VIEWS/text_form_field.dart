@@ -20,7 +20,8 @@ class MyTextFormPage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: MyResponsiveSchema(
+      body: 
+      MyResponsiveSchema(
         mobile: const MyTextFormFieldWidget(
           label: "label",
           textEditingController: null,

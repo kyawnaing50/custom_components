@@ -14,7 +14,7 @@ class CustomDrawer extends StatelessWidget {
           buildDrawerHeader(),
           buildDrawerItem(
             icon: Icons.photo,
-            text: "home",
+            text: "Get OTP",
             onTap: () {
               navigate(0);
             }, //=> navigate(0),
@@ -128,16 +128,16 @@ class CustomDrawer extends StatelessWidget {
       accountName: Text("Kyaw Naing"),
       accountEmail: Text("nainkyawmyat@gmail.com"),
       currentAccountPicture: CircleAvatar(
-          // backgroundImage: AssetImage('image/logo.jpg'),
+        backgroundImage: AssetImage('assets/images/google1.png'),
           ),
       currentAccountPictureSize: Size.square(72),
-      otherAccountsPictures: [
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Text("RC"),
-        )
-      ],
-      otherAccountsPicturesSize: Size.square(50),
+      // otherAccountsPictures: [
+      //   CircleAvatar(
+      //     backgroundColor: Colors.white,
+      //     child: Text("RC"),
+      //   )
+      // ],
+      // otherAccountsPicturesSize: Size.square(50),
     );
   }
 

@@ -10,22 +10,24 @@ import '../BINDING/binding.dart';
 import '../VIEWS/BottonNavigationBar/with_icon_label.dart';
 import '../VIEWS/phone_num_with_country_code.dart';
 import '../VIEWS/radiobutton.dart';
+import '../WIDGETS/pinput.dart';
 import 'route_config.dart';
 
 List<GetPage> route = [
  
   GetPage(
     name: Routes.home,
-    page: () => const HomePage(title: 'Home'),
+    page: () => const OTPPage(),
     binding: HomeBinding(),
   ),
   GetPage(name: Routes.button, page: () => const ButtonPage(title: 'button')),
   GetPage(name: Routes.container, page: () => const ContainaerPage()),
   GetPage(name: Routes.radio, page: () => const RadiobuttonPage()),
-  GetPage(name: Routes.phone, page: () => const MyCountryCodePage()),
+  GetPage(name: Routes.phone, page: () => MyCountryCodePage()),
   GetPage(name: Routes.text, page: () => const MyTextFormPage()),
   GetPage(name: Routes.appbar, page: () => const AppBarPage()),
   GetPage(name: Routes.bottomNavigation, page: () => const BottomNaviOne()),
   GetPage(name: Routes.bottomNavi2, page: () => const BottomNavi2()),
-  GetPage(name: Routes.bottomNavi3, page: () => const BottomNavi3()),
+  GetPage(name: Routes.bottomNavi3, page: () => const BottomNavi3()), //OTPPage
+  // GetPage(name: Routes.home, page: () => const OTPPage()), //OTPPage
 ];
