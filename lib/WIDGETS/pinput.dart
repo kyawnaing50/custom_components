@@ -1,10 +1,11 @@
 import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:my_components/CONFIG/constant.dart';
 import 'package:my_components/WIDGETS/DrawerWidget/drawer_widget.dart';
+import 'package:otp_autofill/otp_autofill.dart';
 import 'package:pinput/pinput.dart';
 import 'Buttons/custom_button.dart';
 
@@ -23,12 +24,31 @@ class _OTPPageState extends State<OTPPage> {
   late Timer _timer;
   int _remain = 10;
   int _isComplete = 0;
-  @override
+  late OTPTextEditController controller;
+  late OTPInteractor _otpInteractor;
+  
+@override
   void initState() {
     super.initState();
     _startTimer();
     _isComplete = 0;
+    _initInteractor();
+    controller = OTPTextEditController(
+      codeLength: 5,
+      //ignore: avoid_print
+      onCodeReceive: (code) => print('Your Application receive code - $code'),
+      otpInteractor: _otpInteractor,
+    )..startListenUserConsent(
+        (code) {
+          final exp = RegExp(r'(\d{6})');
+          return exp.stringMatch(code ?? '') ?? '';
+        },
+        strategies: [
+          SampleStrategy(),
+        ],
+      );
   }
+
 
   void _startTimer() {
     const onSec = Duration(seconds: 1);
@@ -44,16 +64,26 @@ class _OTPPageState extends State<OTPPage> {
   }
 
   void _cancelTimer() {
-    if (_timer != null && _timer.isActive) {
+    if (_timer.isActive) {
       _timer.cancel();
     }
   }
+  Future<void> _initInteractor() async {
+    _otpInteractor = OTPInteractor();
 
+    // You can receive your app signature by using this method.
+    final appSignature = await _otpInteractor.getAppSignature();
+
+    if (kDebugMode) {
+      print('Your app signature: $appSignature');
+    }
+  }
   @override
   void dispose() {
     _cancelTimer();
     _pinController.dispose();
     _focusNode.dispose();
+    controller.stopListen();
     super.dispose();
   }
 
@@ -62,7 +92,7 @@ class _OTPPageState extends State<OTPPage> {
     /// Optionally you can use form to validate the Pinput
     return Scaffold(
       appBar: AppBar(
-        title: Text("Get OTP"),
+        title: const Text("Get OTP"),
         centerTitle: true,
       ),
       body: Padding(
@@ -72,7 +102,7 @@ class _OTPPageState extends State<OTPPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 88,
                 width: double.infinity,
                 // color: Colors.red,
@@ -80,7 +110,7 @@ class _OTPPageState extends State<OTPPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("OTP Verification", style: TextStyle()),
-                    const SizedBox(
+                    SizedBox(
                       height: 8,
                     ),
                     Text(
@@ -138,7 +168,7 @@ class _OTPPageState extends State<OTPPage> {
                                     const TextSpan(text: " seconds")
                                   ],
                                 ),
-                                style: TextStyle(),
+                                style: const TextStyle(),
                                 textAlign: TextAlign.center,
                               ),
                             ],
@@ -184,7 +214,7 @@ class _OTPPageState extends State<OTPPage> {
       textDirection: TextDirection.ltr,
       child: Pinput(
         length: 6,
-        controller: _pinController,
+        controller: controller,
         focusNode: _focusNode,
         androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsRetrieverApi,
         listenForMultipleSmsOnAndroid: true,
@@ -237,6 +267,17 @@ class _OTPPageState extends State<OTPPage> {
           border: Border.all(color: Colors.redAccent),
         ),
       ),
+    );
+  }
+}
+
+
+class SampleStrategy extends OTPStrategy {
+  @override
+  Future<String> listenForCode() {
+    return Future.delayed(
+      const Duration(seconds: 4),
+      () => 'Your code is 123456',
     );
   }
 }

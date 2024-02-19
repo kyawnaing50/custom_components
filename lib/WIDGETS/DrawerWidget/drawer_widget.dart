@@ -118,6 +118,51 @@ class CustomDrawer extends StatelessWidget {
               textIconColor: Get.currentRoute == Routes.bottomNavi3
                   ? Colors.white
                   : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "My Drawer",
+              onTap: () {
+                navigate(10);
+              },
+              tileColor:
+                  Get.currentRoute == Routes.myDrawer ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.myDrawer
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "Vertical Stepper",
+              onTap: () {
+                navigate(11);
+              },
+              tileColor: Get.currentRoute == Routes.verticalStepper
+                  ? Colors.blue
+                  : null,
+              textIconColor: Get.currentRoute == Routes.verticalStepper
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "Simple Tabbar",
+              onTap: () {
+                navigate(12);
+              },
+              tileColor:
+                  Get.currentRoute == Routes.simpleTab ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.simpleTab
+                  ? Colors.white
+                  : Colors.black),
+          buildDrawerItem(
+              icon: Icons.chat,
+              text: "Scroll Tabbar",
+              onTap: () {
+                navigate(13);
+              },
+              tileColor:
+                  Get.currentRoute == Routes.scrollTabar ? Colors.blue : null,
+              textIconColor: Get.currentRoute == Routes.scrollTabar
+                  ? Colors.white
+                  : Colors.black),
         ],
       ),
     );
@@ -188,6 +233,18 @@ class CustomDrawer extends StatelessWidget {
     }
     if (index == 9) {
       Get.toNamed(Routes.bottomNavi3);
+    }
+    if (index == 10) {
+      Get.toNamed(Routes.myDrawer);
+    }
+    if (index == 11) {
+      Get.toNamed(Routes.verticalStepper);
+    }
+    if (index == 12) {
+      Get.toNamed(Routes.simpleTab);
+    }
+    if (index == 13) {
+      Get.toNamed(Routes.scrollTabar);
     }
   }
 }
